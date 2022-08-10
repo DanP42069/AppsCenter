@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>AppsCenter</title>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+			integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+			crossorigin="anonymous"
+		/>
+	</head>
+	<body>
+		<div class="text-center mb-2">
+			<img src="images/AppsCenter.png" alt="Logo" />
+		</div>
+		<div class="input-group text-center w-50 p-3 ml-auto mr-auto">
+			<input
+				type="search"
+				class="form-control rounded ml-5"
+				placeholder="Search"
+				aria-label="Search"
+				aria-describedby="search-addon"
+			/>
+			<button type="button" class="btn btn-outline-primary">Search</button>
+			<button type="button" class="btn btn-success ml-5" onclick="location.href = './AddApp.html';">+ Publish new app</button>
+		</div>
+		<div class="container mt-3 p-3 applications text-center w-25">
+			<div class="row ">
+                <img class="image" src="images/1/facebook.png" alt="App logo" width="100" height="100"></img>
+                <div class="ml-3 text-left">
+                    <h4>Facebook</h4>
+                    <h5>To see whats new in your friends life!</h5>
+                    <p>Price: 2.99$</p>
+                    <p>Company: Facebook</p>
+                </div>
+            </div>
+		</div>
+        <script src="applications.js"></script>
+		<script src="main.js"></script>
+	</body>
+</html>
