@@ -14,7 +14,6 @@ const getNextId = () => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {});
-
 const addApplication = (event) => {
 	event.preventDefault();
 	let name = document.getElementById('appName').value;
@@ -33,7 +32,8 @@ const addApplication = (event) => {
 		(price == '') |
 		isNaN(price) |
 		!isNaN(companyName) |
-		!isNaN(desc)
+		!isNaN(desc) |
+		(name.length < 4)
 	) {
 		document.getElementById('error').innerText = `Oops, something went wrong!
         check your fields again.`;
@@ -49,4 +49,26 @@ const addApplication = (event) => {
 		addItemToTheList(app);
 		location.href = './main.html';
 	}
+};
+
+const priceChange = () => {
+	if (isNaN(event.target.value)) {
+		event.target.style.borderColor = 'red';
+	} else if (event.target.value != '') {
+		event.target.style.borderColor = 'green';
+	} else {
+		event.target.style.removeProperty('border-color');
+	}
+};
+const nameChange = () => {
+	if (event.target.value.length >= 4) {
+		event.target.style.borderColor = 'green';
+	} else if (event.target.value.length == 0) {
+		event.target.style.removeProperty('border-color');
+	} else {
+		event.target.style.borderColor = 'red';
+	}
+};
+window.onload = () => {
+	// make some fields go green
 };

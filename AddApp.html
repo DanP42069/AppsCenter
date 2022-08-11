@@ -25,6 +25,8 @@
 						>
 					</div>
 					<input
+						onkeyup="nameChange()"
+						maxlength="30"
 						id="appName"
 						type="text"
 						class="form-control"
@@ -39,6 +41,7 @@
 						>
 					</div>
 					<input
+						onkeyup="priceChange()"
 						id="price"
 						type="text"
 						class="form-control"
@@ -93,7 +96,7 @@
 				</div>
 				<button class="btn btn-success">Publish application</button>
 			</form>
-			<h5 class="text-left">* - Required</h5>
+			<p class="font-weight-bold">* - Required</p>
 			<p class="text-danger text-center" id="error"></p>
 		</div>
 		<script src="applications.js"></script>
