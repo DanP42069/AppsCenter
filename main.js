@@ -42,7 +42,7 @@ window.onload = () => {
 };
 const search = document.getElementById('search');
 console.log(search);
-function searchAction(){
+function searchAction() {
 	const applications = getData();
 	let filteredApplicatiosn = applications.filter((app) => {
 		return app.name.toLowerCase().includes(search.value.toLowerCase());

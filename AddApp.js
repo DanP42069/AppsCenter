@@ -70,5 +70,14 @@ const nameChange = () => {
 	}
 };
 window.onload = () => {
-	// make some fields go green
+	document.getElementById('companyName').style.borderColor = 'green';
+	document.getElementById('imageUrl').style.borderColor = 'green';
+	document.getElementById('appDesc').style.borderColor = 'green';
+};
+const change = () => {
+	if (!isNaN(event.target.value)) {
+		event.target.style.borderColor = 'red';
+	} else {
+		event.target.style.borderColor = 'green';
+	}
 };
