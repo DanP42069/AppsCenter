@@ -8,11 +8,22 @@ const getData = () => {
 	return JSON.parse(localStorage.getItem('applications'));
 };
 
-document.addEventListener('DOMContentLoaded', () => {});
-const render = () => {
-	const htmlApplications = getData()
+document.addEventListener('DOMContentLoaded', (htmlApplications = getData()) => {});
+const render = (applications = getData()) => {
+	const htmlApplications = applications
 		.map((app) => {
-			return `<div class="row">
+			if (app.imageUrl == '') {
+				return `<div class="row">
+                <img class="image" src="images/Help.png" alt="App logo" width="100" height="100"></img>
+                <div class="ml-3 text-left">
+                    <h4>${app.name}</h4>
+                    <h5>${app.desc}</h5>
+                    <p>Price: ${app.price}$</p>
+                    <p>Company: ${app.companyName}</p>
+                </div>
+            </div>`;
+			} else {
+				return `<div class="row">
                 <img class="image" src="images/${app.id}/${app.imageUrl}" alt="App logo" width="100" height="100"></img>
                 <div class="ml-3 text-left">
                     <h4>${app.name}</h4>
@@ -21,10 +32,20 @@ const render = () => {
                     <p>Company: ${app.companyName}</p>
                 </div>
             </div>`;
+			}
 		})
 		.join('');
-	document.querySelector('.applications').innerHTML = htmlApplications;
+	document.getElementById('applications').innerHTML = htmlApplications;
 };
 window.onload = () => {
-    render();
+	render();
 };
+const search = document.getElementById('search');
+console.log(search);
+function searchAction(){
+	const applications = getData();
+	let filteredApplicatiosn = applications.filter((app) => {
+		return app.name.toLowerCase().includes(search.value.toLowerCase());
+	});
+	render(filteredApplicatiosn);
+}

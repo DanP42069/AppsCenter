@@ -39,7 +39,7 @@ const addApplication = (event) => {
         check your fields again.`;
 	} else {
 		let app = {
-			id: getNextId,
+			id: getNextId(),
 			imageUrl,
 			name,
 			price,
