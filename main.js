@@ -8,7 +8,9 @@ const getData = () => {
 	return JSON.parse(localStorage.getItem('applications'));
 };
 
-document.addEventListener('DOMContentLoaded', (htmlApplications = getData()) => {});
+document.addEventListener('DOMContentLoaded', () => {
+	render();
+});
 const render = (applications = getData()) => {
 	const htmlApplications = applications
 		.map((app) => {
@@ -36,9 +38,6 @@ const render = (applications = getData()) => {
 		})
 		.join('');
 	document.getElementById('applications').innerHTML = htmlApplications;
-};
-window.onload = () => {
-	render();
 };
 const search = document.getElementById('search');
 console.log(search);

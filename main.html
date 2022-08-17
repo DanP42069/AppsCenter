@@ -18,29 +18,25 @@
 		</div>
 		<div class="input-group text-center w-50 p-3 ml-auto mr-auto">
 			<input
-                id="search"
-                onkeyup="searchAction()"
+				id="search"
+				oninput="searchAction()"
 				type="search"
 				class="form-control rounded ml-5"
 				placeholder="Search"
 				aria-label="Search"
 				aria-describedby="search-addon"
 			/>
-			<button type="button" class="btn btn-outline-primary" >Search</button>
-			<button type="button" class="btn btn-success ml-5" onclick="location.href = './AddApp.html';">+ Publish new app</button>
+			<button type="button" class="btn btn-outline-primary">🔎</button>
+			<button
+				type="button"
+				class="btn btn-success ml-5"
+				onclick="location.href = './AddApp.html';"
+			>
+				+ Publish new app
+			</button>
 		</div>
-		<div class="container mt-3 p-3 text-center w-50" id="applications" >
-			<div class="row ">
-                <img class="image" src="images/1/facebook.png" alt="App logo" width="100" height="100"></img>
-                <div class="ml-3 text-left">
-                    <h4>Facebook</h4>
-                    <h5>To see whats new in your friends life!</h5>
-                    <p>Price: 2.99$</p>
-                    <p>Company: Facebook</p>
-                </div>
-            </div>
-		</div>
-        <script src="applications.js"></script>
+		<div class="container mt-3 p-3 text-center w-50" id="applications"></div>
+		<script src="applications.js"></script>
 		<script src="main.js"></script>
 	</body>
 </html>

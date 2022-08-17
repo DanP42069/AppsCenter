@@ -28,9 +28,10 @@ const addApplication = (event) => {
 		companyName = 'this app does not have a company';
 	}
 	if (
-		(name == '') |
-		(price == '') |
+		(name === '') |
+		(price === '') |
 		isNaN(price) |
+		(price < 0) |
 		!isNaN(companyName) |
 		!isNaN(desc) |
 		(name.length < 4)
@@ -51,8 +52,8 @@ const addApplication = (event) => {
 	}
 };
 
-const priceChange = () => {
-	if (isNaN(event.target.value)) {
+const priceChange = (event) => {
+	if (isNaN(event.target.value) | (event.target.value < 0)) {
 		event.target.style.borderColor = 'red';
 	} else if (event.target.value != '') {
 		event.target.style.borderColor = 'green';
@@ -60,7 +61,7 @@ const priceChange = () => {
 		event.target.style.removeProperty('border-color');
 	}
 };
-const nameChange = () => {
+const nameChange = (event) => {
 	if (event.target.value.length >= 4) {
 		event.target.style.borderColor = 'green';
 	} else if (event.target.value.length == 0) {
@@ -74,7 +75,7 @@ window.onload = () => {
 	document.getElementById('imageUrl').style.borderColor = 'green';
 	document.getElementById('appDesc').style.borderColor = 'green';
 };
-const change = () => {
+const change = (event) => {
 	if (!isNaN(event.target.value)) {
 		event.target.style.borderColor = 'red';
 	} else {
