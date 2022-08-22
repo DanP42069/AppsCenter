@@ -14,7 +14,7 @@ const getNextId = () => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {});
-const addApplication = (event) => {
+const addApplication = async (event) => {
 	event.preventDefault();
 	let name = document.getElementById('appName').value;
 	let price = document.getElementById('price').value;
@@ -39,15 +39,14 @@ const addApplication = (event) => {
 		document.getElementById('error').innerText = `Oops, something went wrong!
         check your fields again.`;
 	} else {
-		let app = {
-			id: getNextId(),
+		let application = {
 			imageUrl,
 			name,
 			price,
 			desc,
 			companyName,
 		};
-		addItemToTheList(app);
+		await addAppToDB(application);
 		location.href = './main.html';
 	}
 };

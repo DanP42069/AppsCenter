@@ -1,37 +1,32 @@
 'use strict';
-const getData = () => {
-	if (localStorage.getItem('applications') == null) {
-		localStorage.setItem('applications', JSON.stringify(applications));
-		localStorage.setItem('id', id);
-	}
-
-	return JSON.parse(localStorage.getItem('applications'));
+const getData = async () => {
+	return await getApplications();
 };
 
-document.addEventListener('DOMContentLoaded', () => {
-	render();
+document.addEventListener('DOMContentLoaded', async () => {
+	await render(await getData());
 });
-const render = (applications = getData()) => {
+const render = async (applications) => {
 	const htmlApplications = applications
 		.map((app) => {
-			if (app.imageUrl == '') {
+			if (app.imageurl == '') {
 				return `<div class="row">
                 <img class="image" src="../images/Help.png" alt="App logo" width="100" height="100"></img>
                 <div class="ml-3 text-left">
                     <h4>${app.name}</h4>
                     <h5>${app.desc}</h5>
                     <p>Price: ${app.price}$</p>
-                    <p>Company: ${app.companyName}</p>
+                    <p>Company: ${app.companyname}</p>
                 </div>
             </div>`;
 			} else {
 				return `<div class="row">
-                <img class="image" src="../images/${app.imageUrl}" alt="App logo" width="100" height="100"></img>
+                <img class="image" src="../images/${app.imageurl}" alt="App logo" width="100" height="100"></img>
                 <div class="ml-3 text-left">
                     <h4>${app.name}</h4>
                     <h5>${app.desc}</h5>
                     <p>Price: ${app.price}$</p>
-                    <p>Company: ${app.companyName}</p>
+                    <p>Company: ${app.companyname}</p>
                 </div>
             </div>`;
 			}
@@ -40,9 +35,8 @@ const render = (applications = getData()) => {
 	document.getElementById('applications').innerHTML = htmlApplications;
 };
 const search = document.getElementById('search');
-console.log(search);
-function searchAction() {
-	const applications = getData();
+async function searchAction() {
+	const applications = await getData();
 	let filteredApplicatiosn = applications.filter((app) => {
 		return app.name.toLowerCase().includes(search.value.toLowerCase());
 	});
