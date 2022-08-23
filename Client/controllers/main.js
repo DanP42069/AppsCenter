@@ -18,6 +18,7 @@ const render = async (applications) => {
                     <p>Price: ${app.price}$</p>
                     <p>Company: ${app.companyname}</p>
                 </div>
+				<button type="button" onclick=removeAppFromDB("${app.id}") class="btn btn-danger float-end ml-5">🗑️</button>
             </div>`;
 			} else {
 				return `<div class="row">
@@ -28,17 +29,22 @@ const render = async (applications) => {
                     <p>Price: ${app.price}$</p>
                     <p>Company: ${app.companyname}</p>
                 </div>
+				<button type="button" onclick=removeAppFromDB("${app.id}") class="btn btn-danger float-end ml-5">🗑️</button>
             </div>`;
 			}
 		})
 		.join('');
 	document.getElementById('applications').innerHTML = htmlApplications;
+	if ((applications.length = 0)) {
+		document.getElementById('applications').innerHTML = '';
+	}
 };
 const search = document.getElementById('search');
+
 async function searchAction() {
 	const applications = await getData();
-	let filteredApplicatiosn = applications.filter((app) => {
+	let filteredApplications = applications.filter((app) => {
 		return app.name.toLowerCase().includes(search.value.toLowerCase());
 	});
-	render(filteredApplicatiosn);
+	render(filteredApplications);
 }

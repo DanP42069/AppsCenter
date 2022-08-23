@@ -1,0 +1,8 @@
+<button type="button" onclick=removeAppFromDB("${app.id}") class="btn btn-danger float-end ml-5">🗑️</button>
+
+const removeAppFromDB = async (id) => {
+	await fetch(`http://localhost:3000/api/application/${id}`, {
+		method: 'DELETE',
+	});
+	await render();
+};

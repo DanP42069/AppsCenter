@@ -29,6 +29,7 @@ app.get('/api/application/:id', async (req, res) => {
 	}
 });
 
+
 app.post('/api/application', async (req, res) => {
 	const newApplication = {
 		id: shortid.generate(),
